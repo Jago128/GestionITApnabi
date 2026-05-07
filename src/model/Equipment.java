@@ -1,15 +1,36 @@
 package model;
 
-public class Equipment {
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "PROFILE_")
+public class Equipment implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "equipment_id")
     private String id;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "category")
     private Category category;
 
+    @Column(name = "brandAndModel", nullable = false, unique = true, length = 50)
     private String brandAndModel;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
     private Status status;
 
+    @Column(name = "assignedPerson", nullable = false, unique = true, length = 50)
     private String assignedPerson;
 
     public Equipment() {
@@ -19,9 +40,8 @@ public class Equipment {
         this.status = Status.OPERATIVO;
         this.assignedPerson = "";
     }
-
-    public Equipment(String id, Category category, String brandAndModel, Status status, String assignedPerson) {
-        this.id = id;
+    
+    public Equipment(Category category, String brandAndModel, Status status, String assignedPerson) {
         this.category = category;
         this.brandAndModel = brandAndModel;
         this.status = status;
