@@ -30,7 +30,7 @@ public class AddWindowController implements Initializable {
 
     private Controller cont;
     private MainWindowController mainCont;
-    
+
     public void setMainWindowController(MainWindowController mainCont) {
         this.mainCont = mainCont;
     }
@@ -38,7 +38,7 @@ public class AddWindowController implements Initializable {
     public void setController(Controller cont) {
         this.cont = cont;
     }
-    
+
     @FXML
     private void exit(ActionEvent event) {
         Stage stage = (Stage) btnExit.getScene().getWindow();
@@ -56,6 +56,7 @@ public class AddWindowController implements Initializable {
             showAlert(Alert.AlertType.ERROR, "Error de validacion", "Faltan campos", "Por favor, rellena todos los campos.");
         } else {
             if (cont.addEquipment(cat, mB, sta, per)) {
+                mainCont.loadAllEquipment();
                 Alert alert = showAlert(Alert.AlertType.CONFIRMATION, "Equipamiento añadido correctamente",
                         "El equipamiento ha sido añadido correctamente.", "¿Quieres añadir mas equipamiento?");
                 if (alert.getResult().equals(ButtonType.OK)) {

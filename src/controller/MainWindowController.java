@@ -68,7 +68,7 @@ public class MainWindowController implements Initializable {
         selected = tableEquipment.getSelectionModel().getSelectedItem();
     }
 
-    public void loadAllRoutines() {
+    public void loadAllEquipment() {
         equipment.setAll(cont.getEquipment());
     }
 
@@ -133,7 +133,7 @@ public class MainWindowController implements Initializable {
             if (warning.getResult().equals(ButtonType.OK)) {
                 if (cont.removeEquipment(selected)) {
                     showAlert(Alert.AlertType.INFORMATION, "Equipamiento eliminado", "", "El equipamiento seleccionado ha sido eliminado correctamente.");
-                    loadAllRoutines();
+                    loadAllEquipment();
                 } else {
                     showAlert(Alert.AlertType.ERROR, "ERROR", "Equipamiento no encontradd", "No se ha encontrado el equipamiento.");
                 }

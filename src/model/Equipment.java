@@ -11,30 +11,29 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "PROFILE_")
+@Table(name = "EQUIPMENT")
 public class Equipment implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "equipment_id")
-    private String id;
+    private int id;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "category")
     private Category category;
 
-    @Column(name = "brandAndModel", nullable = false, unique = true, length = 50)
+    @Column(name = "brandAndModel", nullable = false, length = 50)
     private String brandAndModel;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private Status status;
 
-    @Column(name = "assignedPerson", nullable = false, unique = true, length = 50)
+    @Column(name = "assignedPerson", nullable = false, length = 50)
     private String assignedPerson;
 
     public Equipment() {
-        this.id = "";
         this.category = Category.OTROS;
         this.brandAndModel = "";
         this.status = Status.OPERATIVO;
@@ -48,11 +47,11 @@ public class Equipment implements Serializable {
         this.assignedPerson = assignedPerson;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
