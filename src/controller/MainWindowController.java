@@ -29,6 +29,8 @@ public class MainWindowController implements Initializable {
     @FXML
     private Button btnDelete;
     @FXML
+    private TableColumn<Equipment, Integer> col_ID;
+    @FXML
     private TableColumn<Equipment, Category> colCateg;
     @FXML
     private TableColumn<Equipment, String> colBrandAndModel;
@@ -58,6 +60,7 @@ public class MainWindowController implements Initializable {
     }
 
     private void configureTableColumns() {
+        col_ID.setCellValueFactory(new PropertyValueFactory<>("id"));
         colCateg.setCellValueFactory(new PropertyValueFactory<>("category"));
         colBrandAndModel.setCellValueFactory(new PropertyValueFactory<>("brandAndModel"));
         colAssignedPerson.setCellValueFactory(new PropertyValueFactory<>("assignedPerson"));
